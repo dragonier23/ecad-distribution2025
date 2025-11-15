@@ -47,19 +47,20 @@ div:
     # assign the ith bit of N to the LSB of R 
     or t1, t1, t5  
     
-    addi t2, t2, -1
-
     # if D < R, we skip the subtraction stages, and decrement the counter
-    bltu t1, a1, .loop
+    bltu t1, a1, .dec
     
     # subtract D from R 
     sub t1, t1, a1 
     
     # create a value with register i being of value 1, and 0s otherwise. Then, assign it to Q (a0)
     li t3, 1 
-    addi t6, t2, 1
-    sll t3, t3, t6
+    sll t3, t3, t2
     or t0, t0, t3
+
+.dec: 
+    #decrement counter
+    addi t2, t2, -1
     j .loop
     
 .exit:
