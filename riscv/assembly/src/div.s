@@ -31,7 +31,7 @@ div:
 .loop: 
     # i < 0
     # blt t2, zero, .exit  
-    bgt 0, t2, .exit
+    bgt zero, t2, .exit
 
     # bit shift R to the left by 1 
     slli t1, t1, 1 
