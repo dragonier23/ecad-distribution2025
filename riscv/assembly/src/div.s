@@ -18,18 +18,15 @@ div:
     
     # we let the qoutient and remainder be t0, t1 
     # we further let loop counter be t2 
-    beq  a1, x0, .div_by_zero   # if denominator == 0
+    beq  a1, zero, .div_by_zero   # if denominator == 0
     
     # intitial initialisation of Q and R 
     li t0, 0 # Q, alternatively, addi t0, x0, 0
     li t1, 0 # R
-    # li t2, 31 # initialisation of counter
-
-    mv t2, a0
-
+    li t2, 31 # initialisation of counter
 .loop: 
     # i < 0
-    ble t2, zero, .exit  
+    blt t2, zero, .exit  
 
     # bit shift R to the left by 1 
     slli t1, t1, 1 
@@ -55,8 +52,7 @@ div:
 .dec: 
 
     #decrement counter
-    # addi t2, t2, -1
-    srl t2, t2, 1
+    addi t2, t2, -1
     j .loop
     
 .exit:
