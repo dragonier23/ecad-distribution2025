@@ -18,6 +18,7 @@ div:
     
     # we let the qoutient and remainder be t0, t1 
     # we further let loop counter be t2 
+    beq  a1, x0, .div_by_zero   # if denominator == 0
     
     li t0, 0 # Q, alternatively, addi t0, x0, 0
     li t1, 0 # R
@@ -57,6 +58,13 @@ div:
     addi sp, sp, 32      # Free up stack space
     ret
 
+.div_by_zero:
+    li   a0, 0
+    li   a1, 0
+    lw   ra, 28(sp)
+    lw   s0, 24(sp)
+    addi sp, sp, 32
+    ret
 
 
 
