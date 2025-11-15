@@ -29,7 +29,7 @@ div:
 
 .loop: 
     # i < 0
-    blt t2, zero, .exit  
+    ble t2, zero, .exit  
 
     # bit shift R to the left by 1 
     slli t1, t1, 1 
@@ -55,8 +55,8 @@ div:
 .dec: 
 
     #decrement counter
-    #addi t2, t2, -1
-    srli t2, t2, 1
+    # addi t2, t2, -1
+    srl t2, t2, 1
     j .loop
     
 .exit:
