@@ -23,7 +23,7 @@ div:
     li t1, 0 # R
     li t2, 31 
 .loop: 
-    blt t2, zero, .exit  
+    beqz t2, .exit  
     
     slli t1, t1, 1 
     
