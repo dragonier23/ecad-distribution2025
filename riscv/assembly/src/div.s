@@ -23,7 +23,7 @@ div:
     li t1, 0 # R
     li t2, 31 
 .loop: 
-    beqz t2, .exit  
+    blt t2, zero, .exit  
     
     slli t1, t1, 1 
     
@@ -32,7 +32,7 @@ div:
     
     or t1, t1, t5  
     
-    bltu t1, a1, .loop 
+    bltu t1, a1, .dec
     
     sub t1, t1, a1 
     
@@ -40,7 +40,7 @@ div:
     sll t3, t3, t2
     or t0, t0, t3
 
-.sub: 
+.dec: 
     addi t2, t2, -1
     j .loop
     
