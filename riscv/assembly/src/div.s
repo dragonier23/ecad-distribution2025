@@ -29,7 +29,7 @@ div:
 
 .msb: 
     beq t4, zero, .loop
-    slli t4, t4, 1 
+    srli t4, t4, 1 
     addi t2, t2, 1
     j .msb
 
