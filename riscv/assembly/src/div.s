@@ -31,7 +31,6 @@ div:
 .loop: 
     # i < 0
     # blt t2, zero, .exit  
-    bgt zero, t2, .exit
 
     # bit shift R to the left by 1 
     slli t1, t1, 1 
@@ -57,9 +56,8 @@ div:
 .dec: 
     #decrement counter
     # addi t2, t2, -1
-    
     srli t2, t2, 1
-    j .loop
+    bgt t2, zero, .loop
     
 .exit:
     # store the values in the appropriate registers, then return. 
