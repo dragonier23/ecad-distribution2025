@@ -23,8 +23,16 @@ div:
     # intitial initialisation of Q and R 
     li t0, 0 # Q, alternatively, addi t0, x0, 0
     li t1, 0 # R
-    li t2, 31 # initialisation of counter
     
+    mv t4, a0 
+    li t2, 0
+
+.msb: 
+    beq t4, zero, .loop
+    slli t4, t4, 1 
+    addi t2, t2, 1
+    j .msb
+
 .loop: 
     # i < 0
     blt t2, zero, .exit  
